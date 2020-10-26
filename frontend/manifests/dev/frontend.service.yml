@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: frontend-service
+spec:
+  # This type will tell Kubernetes that you want to expose a host port to this
+  # service.
+  type: NodePort
+  selector:
+    # The name of the deployment that this service will route to.
+    app: frontend
+  ports:
+  - port: 80 # The port that other services in Kubernetes can access
+    protocol: TCP
+    targetPort: 80 # the port on the selected pod(s) that this service accesses.
+    # The port that you can use to access the pod(s) being selected externally (eg. Browser).
+    # This can be left empty to be auto-generated.
+    # Note: This will only work with the NodePort/LoadBalancer type.
+    nodePort: 30001 

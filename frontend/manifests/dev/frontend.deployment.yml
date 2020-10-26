@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+# The "kind" is used to determine what this file is describing.
+kind: Deployment
+metadata:
+  # NOTE: https://kubernetes.io/docs/concepts/services-networking/dns-pod-service/#what-things-get-dns-names
+  name: frontend
+spec:
+  selector:
+    matchLabels:
+      app: frontend
+  # This is a number of replicas of pods for this deployment.
+  # Note: This defaults to 1; I am leaving it here just as an example.
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        # This label will be selected by the frontend service
+        # and thus route requests to the container specified here.
+        app: frontend
+    spec:
+      containers:
+      - name: frontend # Used for generating the DNS name.
+        image: localhost:5000/frontend
+        resources:
+          # Setting just the limits also set the requests to the same values.
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80 # A port binding to the container.

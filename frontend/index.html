@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Kubernets Demo</title>
+  <style>
+    * {
+      font-family: monospace;
+    }
+
+    button {
+      border: none;
+      padding: 2em;
+      cursor: pointer;
+      box-shadow: 1em 2em gray;
+      margin-bottom: 1em;
+    }
+
+    body {
+      margin: 0;
+      box-sizing: border-box;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    section {
+      flex: 1;
+      display: flex;
+      height: 100vh;
+      width: 100vw;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .section-1 {
+      background-color: hsl(40, 10%, 90%);
+      flex-direction: column;
+    }
+
+    #pixlee_container {
+      max-height: 100%;
+      height: 100vh;
+      width: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <section class="section-1">
+    <h1>Welcome to the Kubernetes demo!</h1>
+    <button id="date_button">Get important date!</button>
+    <marquee>
+      <h2 id="important_date"></h2>
+    </marquee>
+  </section>
+  <section class="section-2">
+    <div class="tenor-gif-embed" data-postid="6103373" data-share-method="host" data-width="100%" data-aspect-ratio="1.7785714285714287"><a href="https://tenor.com/view/owenwilsonwow-wow-ohwow-owen-wilson-gif-6103373">Owen Wilson Amazing GIF</a> from <a href="https://tenor.com/search/owenwilson-gifs">Owenwilson GIFs</a></div><script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+  </section>
+
+  <script>
+    const dateButton = document.getElementById('date_button');
+    const importantDateElement = document.getElementById('important_date');
+    dateButton.onclick = e => {
+      importantDateElement.innerText = 'YE BOIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII';
+      fetch('http://localhost:30514/api/v1/date')
+        .then(resp => resp.json())
+        .then(({ date }) => {
+          importantDateElement.innerText = date;
+          console.debug(date);
+        })
+        .catch(err => {
+          importantDateElement.innerText = err;
+          console.debug(err);
+        });
+    };
+  </script>
+</body>
+
+</html>

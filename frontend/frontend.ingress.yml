@@ -1,0 +1,19 @@
+# NOTE: This file is currently unused in this demo. In the future we will use it
+# instead of NodePort, once Docker Desktop gets the latest version of Kubernetes.
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /front
+        pathType: Prefix
+        backend:
+          service:
+            name: frontend-service
+            port:
+              number: 8080
