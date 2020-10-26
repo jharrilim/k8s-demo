@@ -22,6 +22,10 @@
 - [FAQ](#faq)
   - [I enabled Kubernetes in Docker for Desktop (Mac), but I can't access my NodePort. What do I do?](#i-enabled-kubernetes-in-docker-for-desktop-mac-but-i-cant-access-my-nodeport-what-do-i-do)
 
+Watch celebreties expalin Kubernetes!
+
+[![Celebrities Explain DevOps](https://img.youtube.com/vi/QxvmO-QlxJQ/0.jpg)](https://www.youtube.com/watch?v=QxvmO-QlxJQ)
+
 ## Prerequisites
 
 - Have [Docker Desktop](https://www.docker.com/products/docker-desktop) installed
