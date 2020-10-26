@@ -24,3 +24,9 @@ spec:
             value: "80"
         ports:
         - containerPort: 80
+        livenessProbe:
+          httpGet:
+            port: 80
+            path: /health
+          initialDelaySeconds: 5 # Wait 5 seconds for startup
+          periodSeconds: 60 # Check every minute

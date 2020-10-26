@@ -1,4 +1,4 @@
-PHONY: build-back build-front build push-back push-front push deploy-back deploy-front deploy config-back ingress
+PHONY: build-back build-front build push-back push-front push deploy-back deploy-front deploy config-back ingress undeploy
 
 ingress:
 	kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.40.2/deploy/static/provider/cloud/deploy.yaml
@@ -23,6 +23,12 @@ deploy-front:
 	kubectl apply -f ./frontend/manifests/dev/frontend.service.yml
 	# kubectl apply -f ./frontend/manifests/dev/frontend.ingress.yml
 deploy: deploy-back deploy-front
+
+undeploy:
+	kubectl delete deployment backend
+	kubectl delete deployment frontend
+	kubectl delete svc dateapplication
+	kubectl delete svc frontend-service
 
 # TODO: Add config-map support
 config-back:

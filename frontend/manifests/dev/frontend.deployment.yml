@@ -26,5 +26,10 @@ spec:
           limits:
             memory: "128Mi"
             cpu: "500m"
+        env:
+            - name: PORT
+              value: "80"
+            - name: DATE_API
+              value: dateapplication # Service name of the date application
         ports:
         - containerPort: 80 # A port binding to the container.

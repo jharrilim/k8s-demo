@@ -10,7 +10,7 @@ app.use(cors({
 
 
 app.use('/health', (_, res) => {
-  res.send({ status: 'UP' });
+  res.send('OK');
 });
 
 if (!process.env.V1_DISABLED) {
@@ -20,16 +20,17 @@ if (!process.env.V1_DISABLED) {
 }
 
 app.get('/api/v2/date', (req, res) => {
-  if (req.hostname === 'frontend') {
-    res.send({
-      date: new Date().toISOString(),
-      meta: { format: 'iso' }
-    });
-  } else {
-    res.status(400).send(`YOU AREN'T MY APP`);
-  }
+  res.send({
+    date: new Date().toISOString(),
+    meta: { format: 'iso' }
+  });
 });
 
 app.listen(port, () => {
   console.log(`Started backend server on ${port}`);
+});
+
+process.on('SIGINT', () => {
+  console.info("Interrupted");
+  process.exit(0);
 });

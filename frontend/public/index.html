@@ -3,7 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
-  <title>Kubernets Demo</title>
+  <!-- https://cto.ai/blog/celebrities-explain-devops/ -->
+  <title>Kuber Nets Demo</title>
   <style>
     * {
       font-family: monospace;
@@ -38,13 +39,20 @@
       flex-direction: column;
     }
 
+    .section-2 {
+      background-image: linear-gradient(to right, green,blue,indigo);
+    }
+
     #pixlee_container {
       max-height: 100%;
       height: 100vh;
       width: 100%;
     }
+
     .tenor-gif-embed {
       max-width: 800px;
+      border: 20px solid black; /* aw yis */
+      box-shadow: 132px 64px black; /* AW YIS */
     }
   </style>
 </head>
@@ -70,7 +78,7 @@
     const importantDateElement = document.getElementById('important_date');
     dateButton.onclick = e => {
       importantDateElement.innerText = 'YE BOIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII';
-      fetch('http://localhost:30514/api/v1/date')
+      fetch('/api/date')
         .then(resp => resp.json())
         .then(({ date }) => {
           importantDateElement.innerText = date;
