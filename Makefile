@@ -24,5 +24,6 @@ deploy-front:
 	# kubectl apply -f ./frontend/manifests/dev/frontend.ingress.yml
 deploy: deploy-back deploy-front
 
+# TODO: Add config-map support
 config-back:
 	kubectl apply -f ./backend/manifests/dev/
